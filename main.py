@@ -3,6 +3,8 @@ import laser_tracker
 import time
 
 
+ship_pos = 0
+
 def gstreamer_pipeline(
     capture_width=1280,
     capture_height=720,
@@ -10,8 +12,7 @@ def gstreamer_pipeline(
     display_height=720,
     framerate=60,
     flip_method=0,
-):
-    return (
+): return (
         "nvarguscamerasrc ! "
         "video/x-raw(memory:NVMM), "
         "width=(int)%d, height=(int)%d, "
@@ -35,6 +36,14 @@ cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=2), cv2.CAP_GSTREAMER)
 cap.set(3, 1280)
 cap.set(4, 720)
 
+
+def move_ship(laser_x, laser_y):
+    if laser_x > 500 and laser_y > 500:
+        print("Move to pos 1.")
+        
+    return
+
+
 while(True):
     ret, frame = cap.read()
 
@@ -45,7 +54,6 @@ while(True):
         laser_y = laser_coords[1]
         if laser_y > 140 and laser_y < 600 and laser_x > 250 and laser_x < 910:
             print("{0}, {1}".format(laser_x, laser_y))
+            move_ship(laser_x, laser_y)
             #cv2.circle(frame, (int(laser_x), int(laser_y)), int(radius), (0, 255, 255), 2)
             #cv2.imwrite('test.jpg', frame)
-
-

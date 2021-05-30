@@ -3,8 +3,6 @@ import cv2
 import numpy
 
 
-cam_width = 300
-cam_height = 300
 hue_min = 210
 hue_max = 255
 sat_min = 0
@@ -17,7 +15,7 @@ channels = {
             'saturation': None,
             'value': None,
             'laser': None,
-        }
+            }
 
 
 def threshold_image(channel):
@@ -63,11 +61,6 @@ def track(frame, mask):
         # centroid
         c = max(countours, key=cv2.contourArea)
         ((x, y), radius) = cv2.minEnclosingCircle(c)
-        # moments = cv2.moments(c)
-        # if moments["m00"] > 0:
-        #     center = int(moments["m10"] / moments["m00"]), \
-        #              int(moments["m01"] / moments["m00"])
-        # else:
         center = int(x), int(y)
 
     return center, radius
