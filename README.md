@@ -12,7 +12,7 @@ A Jetson Xavier NX is running the game `Atlantis` on the Stella Atari 2600 emula
 
 A camera connected to the Jetson is continually capturing images of the game screen.  A thresholding algorithm implemented in OpenCV searches out the red dot of a laser pointer.
 
-A toy gun modified to "shoot" a laser beam is pointed at the game screen.  An algoritm implemented in Python matches the coordintes of the detected laser dot with coordinates in the field of game play.  When coordinates are within a certain range, actions within the game are carried out by simulating sequences of key presses on the keyboard with the `pynput` Python module.
+A toy gun modified to "shoot" a laser beam is pointed at the game screen.  An algorithm implemented in Python matches the coordinates of the detected laser dot with coordinates in the field of game play.  When coordinates are within a certain range, actions within the game are carried out by simulating sequences of key presses on the keyboard with the `pynput` Python module.
 
 ## Media
 
