@@ -92,6 +92,7 @@ def move_ship(laser_x, laser_y):
         keyboard.press(Key.space)
         time.sleep(0.02)
         keyboard.release(Key.space)
+        time.sleep(0.02)
     elif move > 0: # Turn right
         for i in range(move):
             keyboard.press(Key.right)
@@ -101,6 +102,7 @@ def move_ship(laser_x, laser_y):
         keyboard.press(Key.space)
         time.sleep(0.02)
         keyboard.release(Key.space)
+        time.sleep(0.02)
 
     # Ship has now been moved. Update current position.
     ship_pos = new_ship_pos
