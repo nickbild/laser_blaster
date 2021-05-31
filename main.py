@@ -39,43 +39,54 @@ cap.set(4, 720)
 
 def move_ship(laser_x, laser_y):
     global ship_pos
+    new_ship_pos = 0
 
     # Ship at (615, 360)
     if laser_x > 625: # right screen
         if laser_y > 542:
-            ship_pos = 7
+            new_ship_pos = 7
         elif laser_y > 485:
-            ship_pos = 6
+            new_ship_pos = 6
         elif laser_y > 428:
-            ship_pos = 5
+            new_ship_pos = 5
         elif laser_y > 371:
-            ship_pos = 4
+            new_ship_pos = 4
         elif laser_y > 314:
-            ship_pos = 3
+            new_ship_pos = 3
         elif laser_y > 257:
-            ship_pos = 2
+            new_ship_pos = 2
         else:
-            ship_pos = 1
+            new_ship_pos = 1
     elif laser_x < 600: # left screen
         if laser_y > 502:
-            ship_pos = 9
+            new_ship_pos = 9
         elif laser_y > 445:
-            ship_pos = 10
+            new_ship_pos = 10
         elif laser_y > 388:
-            ship_pos = 11
+            new_ship_pos = 11
         elif laser_y > 331:
-            ship_pos = 12
+            new_ship_pos = 12
         elif laser_y > 274:
-            ship_pos = 13
+            new_ship_pos = 13
         elif laser_y > 217:
-            ship_pos = 14
+            new_ship_pos = 14
         else:
-            ship_pos = 15
+            new_ship_pos = 15
     else: # center screen
         if laser_y < 360:
-            ship_pos = 0
+            new_ship_pos = 0
         else:
-            ship_pos = 8
+            new_ship_pos = 8
+
+    # Determine move to make.
+    move = new_ship_pos - ship_pos
+    if move < 0: # Turn left.
+        print("LEFT")
+    elif move > 0: # Turn right
+        print("RIGHT")
+
+    # Ship has now been moved. Update current position.
+    ship_pos = new_ship_pos
 
     return
 
