@@ -38,8 +38,9 @@ cap.set(4, 720)
 
 
 def move_ship(laser_x, laser_y):
-    # Ship at (615, 360)
+    global ship_pos
 
+    # Ship at (615, 360)
     if laser_x > 625: # right screen
         if laser_y > 542:
             ship_pos = 7
