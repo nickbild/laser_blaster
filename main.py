@@ -38,9 +38,44 @@ cap.set(4, 720)
 
 
 def move_ship(laser_x, laser_y):
-    if laser_x > 500 and laser_y > 500:
-        print("Move to pos 1.")
-        
+    # Ship at (615, 360)
+
+    if laser_x > 625: # right screen
+        if laser_y > 542:
+            ship_pos = 7
+        elif laser_y > 485:
+            ship_pos = 6
+        elif laser_y > 428:
+            ship_pos = 5
+        elif laser_y > 371:
+            ship_pos = 4
+        elif laser_y > 314:
+            ship_pos = 3
+        elif laser_y > 257:
+            ship_pos = 2
+        else:
+            ship_pos = 1
+    elif laser_x < 600: # left screen
+        if laser_y > 502:
+            ship_pos = 9
+        elif laser_y > 445:
+            ship_pos = 10
+        elif laser_y > 388:
+            ship_pos = 11
+        elif laser_y > 331:
+            ship_pos = 12
+        elif laser_y > 274:
+            ship_pos = 13
+        elif laser_y > 217:
+            ship_pos = 14
+        else:
+            ship_pos = 15
+    else: # center screen
+        if laser_y < 360:
+            ship_pos = 0
+        else:
+            ship_pos = 8
+
     return
 
 
@@ -53,7 +88,8 @@ while(True):
         laser_x = laser_coords[0]
         laser_y = laser_coords[1]
         if laser_y > 140 and laser_y < 600 and laser_x > 250 and laser_x < 910:
-            print("{0}, {1}".format(laser_x, laser_y))
+            # print("{0}, {1}".format(laser_x, laser_y))
             move_ship(laser_x, laser_y)
+            print(ship_pos)
             #cv2.circle(frame, (int(laser_x), int(laser_y)), int(radius), (0, 255, 255), 2)
             #cv2.imwrite('test.jpg', frame)
