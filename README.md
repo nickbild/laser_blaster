@@ -1,6 +1,6 @@
 # Laser Blaster
 
-Coming soon!
+Play the Atari 2600 with a laser gun!
 
 ## How It Works
 
