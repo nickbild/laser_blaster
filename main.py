@@ -6,6 +6,7 @@ from pynput.keyboard import Key, Controller
 
 ship_pos = 0
 keyboard = Controller()
+key_hold_time = 0.04
 
 
 def gstreamer_pipeline(
@@ -86,28 +87,28 @@ def move_ship(laser_x, laser_y):
     if move < 0: # Turn left.
         for i in range(abs(move)):
             keyboard.press(Key.left)
-            time.sleep(0.02)
+            time.sleep(key_hold_time)
             keyboard.release(Key.left)
-            time.sleep(0.02)
+            time.sleep(key_hold_time)
         keyboard.press(Key.space)
-        time.sleep(0.02)
+        time.sleep(key_hold_time)
         keyboard.release(Key.space)
-        time.sleep(0.02)
+        time.sleep(key_hold_time)
     elif move > 0: # Turn right
         for i in range(move):
             keyboard.press(Key.right)
-            time.sleep(0.02)
+            time.sleep(key_hold_time)
             keyboard.release(Key.right)
-            time.sleep(0.02)
+            time.sleep(key_hold_time)
         keyboard.press(Key.space)
-        time.sleep(0.02)
+        time.sleep(key_hold_time)
         keyboard.release(Key.space)
-        time.sleep(0.02)
+        time.sleep(key_hold_time)
     else: # Same position
         keyboard.press(Key.space)
-        time.sleep(0.02)
+        time.sleep(key_hold_time)
         keyboard.release(Key.space)
-        time.sleep(0.02)
+        time.sleep(key_hold_time)
 
     # Ship has now been moved. Update current position.
     ship_pos = new_ship_pos
