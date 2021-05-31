@@ -1,6 +1,7 @@
 import cv2
 import laser_tracker
 import time
+from pynput.keyboard import Key, Controller
 
 
 ship_pos = 0
@@ -81,9 +82,17 @@ def move_ship(laser_x, laser_y):
     # Determine move to make.
     move = new_ship_pos - ship_pos
     if move < 0: # Turn left.
-        print("LEFT")
+        for i in range(move):
+            keyboard.press(Key.LEFT)
+            keyboard.release(Key.LEFT)
+        keyboard.press(Key.SPACE)
+        keyboard.release(Key.SPACE)
     elif move > 0: # Turn right
-        print("RIGHT")
+        for i in range(move):
+            keyboard.press(Key.RIGHT)
+            keyboard.release(Key.RIGHT)
+        keyboard.press(Key.SPACE)
+        keyboard.release(Key.SPACE)
 
     # Ship has now been moved. Update current position.
     ship_pos = new_ship_pos
