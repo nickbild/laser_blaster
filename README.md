@@ -7,7 +7,7 @@ Coming soon!
 ## Media
 
 Screenshot:
-![Screenshot](https://raw.githubusercontent.com/nickbild/laser_blaster/main/media/screenshot_sm.jpg)
+![Screenshot](https://raw.githubusercontent.com/nickbild/laser_blaster/main/media/screenshot2_sm.jpg)
 
 
 ## Bill of Materials
