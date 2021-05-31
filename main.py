@@ -5,6 +5,8 @@ from pynput.keyboard import Key, Controller
 
 
 ship_pos = 0
+keyboard = Controller()
+
 
 def gstreamer_pipeline(
     capture_width=1280,
