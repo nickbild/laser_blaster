@@ -16,7 +16,7 @@ Jetson Xavier NX:
 ![Screenshot](https://raw.githubusercontent.com/nickbild/laser_blaster/main/media/jetson_nx_sm.jpg)
 
 Full setup:
-![Screenshot](https://raw.githubusercontent.com/nickbild/laser_blaster/main/media/full_setup_sm.jpg)
+![Screenshot](https://raw.githubusercontent.com/nickbild/laser_blaster/main/media/full_setup_sm2.jpg)
 
 
 ## Bill of Materials
