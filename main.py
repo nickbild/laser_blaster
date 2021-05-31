@@ -84,7 +84,7 @@ def move_ship(laser_x, laser_y):
     # Determine move to make.
     move = new_ship_pos - ship_pos
     if move < 0: # Turn left.
-        for i in range(move):
+        for i in range(abs(move)):
             keyboard.press(Key.left)
             time.sleep(0.02)
             keyboard.release(Key.left)
