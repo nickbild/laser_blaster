@@ -2,9 +2,15 @@
 
 Play the Atari 2600 with a laser gun!
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/nickbild/laser_blaster/main/media/teaser.gif">
+</p>
+
 ## How It Works
 
 ## Media
+
+YouTube: https://www.youtube.com/watch?v=_1XSo25VdcU
 
 Screenshot:
 ![Screenshot](https://raw.githubusercontent.com/nickbild/laser_blaster/main/media/screenshot_sm2.jpg)
