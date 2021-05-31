@@ -48,7 +48,7 @@ def fire_cannon(laser_x, laser_y):
         keyboard.release(Key.space)
         keyboard.release(Key.left)
     elif laser_x < 240: # left screen
-        keyboard.press(Key.right
+        keyboard.press(Key.right)
         time.sleep(key_hold_time)
         keyboard.press(Key.space)
         time.sleep(key_hold_time)
