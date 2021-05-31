@@ -103,6 +103,11 @@ def move_ship(laser_x, laser_y):
         time.sleep(0.02)
         keyboard.release(Key.space)
         time.sleep(0.02)
+    else: # Same position
+        keyboard.press(Key.space)
+        time.sleep(0.02)
+        keyboard.release(Key.space)
+        time.sleep(0.02)
 
     # Ship has now been moved. Update current position.
     ship_pos = new_ship_pos
