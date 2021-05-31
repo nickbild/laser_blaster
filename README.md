@@ -22,6 +22,8 @@ Full setup:
 ## Bill of Materials
 
 - 1 x NVIDIA Jetson Xavier NX
+- 1 x Raspberry Pi Camera v2
+- 1 x CSI cable
 - 1 x Projector
 - 1 x Laser diode
 - 1 x Push button
