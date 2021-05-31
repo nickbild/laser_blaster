@@ -4,10 +4,8 @@ import time
 from pynput.keyboard import Key, Controller
 
 
-ship_pos = 0
 keyboard = Controller()
-key_hold_time = 0.04
-
+key_hold_time = 0.01
 
 def gstreamer_pipeline(
     capture_width=1280,
@@ -41,92 +39,40 @@ cap.set(3, 1280)
 cap.set(4, 720)
 
 
-def move_ship(laser_x, laser_y):
-    global ship_pos
-    new_ship_pos = 0
-
-    # Ship at (615, 360)
-    if laser_x > 625: # right screen
-        if laser_y > 542:
-            new_ship_pos = 7
-        elif laser_y > 485:
-            new_ship_pos = 6
-        elif laser_y > 428:
-            new_ship_pos = 5
-        elif laser_y > 371:
-            new_ship_pos = 4
-        elif laser_y > 314:
-            new_ship_pos = 3
-        elif laser_y > 257:
-            new_ship_pos = 2
-        else:
-            new_ship_pos = 1
-    elif laser_x < 600: # left screen
-        if laser_y > 502:
-            new_ship_pos = 9
-        elif laser_y > 445:
-            new_ship_pos = 10
-        elif laser_y > 388:
-            new_ship_pos = 11
-        elif laser_y > 331:
-            new_ship_pos = 12
-        elif laser_y > 274:
-            new_ship_pos = 13
-        elif laser_y > 217:
-            new_ship_pos = 14
-        else:
-            new_ship_pos = 15
+def fire_cannon(laser_x, laser_y):
+    if laser_x > 360: # right screen
+        keyboard.press(Key.left)
+        time.sleep(key_hold_time)
+        keyboard.press(Key.space)
+        time.sleep(key_hold_time)
+        keyboard.release(Key.space)
+        keyboard.release(Key.left)
+    elif laser_x < 240: # left screen
+        keyboard.press(Key.right
+        time.sleep(key_hold_time)
+        keyboard.press(Key.space)
+        time.sleep(key_hold_time)
+        keyboard.release(Key.space)
+        keyboard.release(Key.right)
     else: # center screen
-        if laser_y < 360:
-            new_ship_pos = 0
-        else:
-            new_ship_pos = 8
-
-    # Determine move to make.
-    move = new_ship_pos - ship_pos
-    if move < 0: # Turn left.
-        for i in range(abs(move)):
-            keyboard.press(Key.left)
-            time.sleep(key_hold_time)
-            keyboard.release(Key.left)
-            time.sleep(key_hold_time)
         keyboard.press(Key.space)
         time.sleep(key_hold_time)
         keyboard.release(Key.space)
-        time.sleep(key_hold_time)
-    elif move > 0: # Turn right
-        for i in range(move):
-            keyboard.press(Key.right)
-            time.sleep(key_hold_time)
-            keyboard.release(Key.right)
-            time.sleep(key_hold_time)
-        keyboard.press(Key.space)
-        time.sleep(key_hold_time)
-        keyboard.release(Key.space)
-        time.sleep(key_hold_time)
-    else: # Same position
-        keyboard.press(Key.space)
-        time.sleep(key_hold_time)
-        keyboard.release(Key.space)
-        time.sleep(key_hold_time)
-
-    # Ship has now been moved. Update current position.
-    ship_pos = new_ship_pos
 
     return
 
 
 while(True):
     ret, frame = cap.read()
+    frame = cv2.resize(frame, (640, 360))
 
     laser_coords, radius = laser_tracker.detect(frame)
 
     if laser_coords is not None:
         laser_x = laser_coords[0]
         laser_y = laser_coords[1]
-        if laser_y > 140 and laser_y < 600 and laser_x > 250 and laser_x < 910:
+        if laser_y > 68 and laser_y < 275 and laser_x > 158 and laser_x < 434:
             # print("{0}, {1}".format(laser_x, laser_y))
-            move_ship(laser_x, laser_y)
-            print(ship_pos)
+            fire_cannon(laser_x, laser_y)
             #cv2.circle(frame, (int(laser_x), int(laser_y)), int(radius), (0, 255, 255), 2)
             #cv2.imwrite('test.jpg', frame)
